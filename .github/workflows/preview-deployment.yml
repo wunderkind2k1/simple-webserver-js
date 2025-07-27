@@ -1,0 +1,29 @@
+name: Preview Deployment
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy preview to beforeprod.com
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build application
+        run: npm run build
+      - name: Deploy to beforeprod.com
+        uses: ./.github/actions/preview_app
+        id: beforeprod
+        with:
+          build_folder: './.next'
+          platform: 'JS'
+        env:
+          BP_USER: ${{ secrets.BP_USER }}
+          BP_PASSWORD: ${{ secrets.BP_PASSWORD }}
