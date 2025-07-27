@@ -1,0 +1,21 @@
+name: Deploy Preview App
+description: Deploy application to beforeprod.com for preview
+inputs:
+  build_folder:
+    description: Path to the build folder
+    required: true
+  platform:
+    description: Platform type (GO, JS)
+    required: true
+    default: GO
+outputs:
+  url:
+    description: Preview URL
+  time:
+    description: Deployment timestamp
+runs:
+  using: docker
+  image: Dockerfile
+  env:
+    BP_USER: ${{ secrets.BP_USER }}
+    BP_PASSWORD: ${{ secrets.BP_PASSWORD }}

@@ -1,0 +1,8 @@
+name: Cleanup Preview Deployment
+description: Cleanup preview deployment from beforeprod.com
+runs:
+  using: docker
+  image: Dockerfile
+  env:
+    BP_USER: ${{ secrets.BP_USER }}
+    BP_PASSWORD: ${{ secrets.BP_PASSWORD }}
