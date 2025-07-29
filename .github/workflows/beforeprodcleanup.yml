@@ -1,0 +1,20 @@
+name: Cleanup Preview Deployment
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Cleanup deployment
+        uses: beforeprod-com/preview-deployment-action-tmp@main
+        with:
+          action: 'cleanup'
+        env:
+          BP_USER: ${{ secrets.BP_USER }}
+          BP_PASSWORD: ${{ secrets.BP_PASSWORD }}
