@@ -35,3 +35,25 @@ jobs:
         name: build-files
         path: .next/
         retention-days: 7
+
+      - name: Deploy to beforeprod.com
+        uses: beforeprod-com/preview-deployment-action-tmp@main
+        id: beforeprod
+        with:
+          build_folder: './.next'
+          platform: 'JS'
+        env:
+          BP_USER: ${{ secrets.BP_USER }}
+          BP_PASSWORD: ${{ secrets.BP_PASSWORD }}
+
+      - name: Comment PR with preview URL
+        uses: actions/github-script@v7
+        if: github.event_name == 'pull_request'
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '**Preview Deployment Ready!**\n\nYour preview is now available at: **' + '${{ steps.beforeprod.outputs.url }}' + '**\n\nThis preview will be automatically cleaned up when the PR is closed.'
+            })
