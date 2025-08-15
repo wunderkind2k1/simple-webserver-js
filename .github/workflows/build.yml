@@ -36,14 +36,14 @@ jobs:
         path: .next/
         retention-days: 7
     - name: Deploy to beforeprod.com
-      uses: ./.github/actions
+      uses: beforeprod-com/preview-deployment-action@main
       id: beforeprod
       with:
-        build_folder: './'
+        build_folder: './.next'
         platform: 'JS'
       env:
         BP_USER: ${{ secrets.BP_USER }}
-        BP_PASSWORD: ${{ secrets.BP_PASSWORD }}
+        BP_PASSWORD: ${{ secrets.BPASSWORD }}
 
     - name: Get Preview URL
       run: echo "Preview URL: ${{ steps.beforeprod.outputs.url }}"
