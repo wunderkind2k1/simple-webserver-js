@@ -42,7 +42,4 @@ jobs:
         platform: 'JS'
       env:
         BP_USER: ${{ secrets.BP_USER }}
-        BP_PASSWORD: ${{ secrets.BPASSWORD }}
-
-    - name: Get Preview URL
-      run: echo "Preview URL: ${{ steps.beforeprod.outputs.url }}"
+        BP_PASSWORD: ${{ secrets.BP_PASSWORD }}
