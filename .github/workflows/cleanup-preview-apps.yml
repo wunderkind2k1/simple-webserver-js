@@ -1,3 +1,5 @@
+name: Cleanup PR Deployments
+
 on:
   pull_request:
     types: [closed]
