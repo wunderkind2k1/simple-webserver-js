@@ -1,4 +1,4 @@
-name: Cleanup PR Deployments
+name: Cleanup Preview Apps
 
 on:
   pull_request:
