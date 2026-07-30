@@ -4,6 +4,10 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
+  permissions:
+    contents: read
+    pull-requests: write   # required for Update PR description
+
 jobs:
   build:
     runs-on: ubuntu-latest
