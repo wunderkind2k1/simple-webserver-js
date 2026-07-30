@@ -27,7 +27,7 @@ export default function Home() {
             </span>
           </h3>
           <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Built with Next.js 14 and TypeScript
+            Built with Next.js 16 and TypeScript
           </p>
         </div>
 
@@ -39,7 +39,7 @@ export default function Home() {
             </span>
           </h3>
           <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Powered by React 18
+            Powered by React 19
           </p>
         </div>
 
