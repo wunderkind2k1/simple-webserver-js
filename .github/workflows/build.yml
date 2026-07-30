@@ -31,13 +31,6 @@ jobs:
     - name: Build application
       run: npm run build
 
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v7
-      with:
-        name: build-files
-        path: .next/
-        retention-days: 7
-
     - name: Deploy to beforeprod.com
       uses: beforeprod-com/preview-deployment-action@main
       id: beforeprod
