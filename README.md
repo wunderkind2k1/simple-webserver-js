@@ -1,5 +1,7 @@
 # preview-demo-js
 
+## This is just for testing. Will be removed/ deleted.
+
 Minimal **Next.js** app that shows [Beforeprod](https://beforeprod.com) preview deployments on every pull request.
 
 Open a PR → GitHub Actions builds the app → Beforeprod spins up an isolated preview → the **HTTPS preview URL is written into the PR description**. Close the PR → the preview is cleaned up.
